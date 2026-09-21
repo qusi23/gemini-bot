@@ -74,6 +74,8 @@ module.exports = async (req, res) => {
           await supabase.from('inventory').insert(links.map(link => ({ link })));
           const { count } = await supabase.from('inventory').select('*', { count: 'exact', head: true });
           await sendMessage(chatId, `✅ تمت إضافة ${links.length} روابط.\n📦 إجمالي المخزن: ${count}`);
+        } else {
+          await sendMessage(chatId, 'اكتب الروابط بعد الأمر كالتالي:\n/add رابط1 رابط2');
         }
       }
       else if (text === '/stock' && isAdmin) {
@@ -107,6 +109,5 @@ module.exports = async (req, res) => {
     console.error(error);
   }
 
-  // الآن نرسل الاستجابة بعد أن أنهينا كل شيء!
   return res.status(200).send('OK');
 };
