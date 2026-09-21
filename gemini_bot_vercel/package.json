@@ -1,0 +1,8 @@
+{
+  "name": "gemini-store-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot for Gemini store",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  }
+}
